@@ -1,5 +1,5 @@
 from django.db import models
-from main.models import Components
+from main.models import Components, Projects
 
 from users.models import User
 
@@ -16,6 +16,8 @@ class OrderitemQueryset(models.QuerySet):
 
 class Order(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.SET_DEFAULT, blank=True, null=True, verbose_name="Пользователь", default=None)
+    dateTime=models.DateTimeField(blank=True,null=True)     
+    project=models.ForeignKey(to=Projects,null=True, verbose_name='Проект', on_delete=models.CASCADE)
     created_timestamp = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания заказа")
     phone_number = models.CharField(max_length=20, verbose_name="Номер телефона")
     requires_delivery = models.BooleanField(default=False, verbose_name="Требуется доставка")
@@ -23,6 +25,8 @@ class Order(models.Model):
     payment_on_get = models.BooleanField(default=False, verbose_name="Оплата при получении")
     is_paid = models.BooleanField(default=False, verbose_name="Оплачено")
     status = models.CharField(max_length=50, default='В обработке', verbose_name="Статус заказа")
+    note=models.TextField(max_length=200,blank=True,null=True,verbose_name='Примечания')
+    slug=models.SlugField(max_length=200,unique=True,blank=True,null=True,verbose_name='URL')
 
     class Meta:
         db_table = "order"

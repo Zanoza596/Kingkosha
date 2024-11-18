@@ -8,16 +8,6 @@ from django.apps import apps
 #for model in ms:
 #    admin.site.register(model)
 
-from main.models import Orderers
-@admin.register(Orderers)
-class OrderersAdmin(admin.ModelAdmin):
-    prepopulated_fields={'slug':('familyName',)} 
-    list_display=['familyName','name','secondName','enterprise','dateOfBirth','address','telephones','photo','note','slug']
-    list_editable=['name','secondName','enterprise','dateOfBirth','address','telephones','photo','note','slug']
-    search_fields=['familyName','name','secondName','enterprise','dateOfBirth','address','telephones','photo','note','slug']
-    list_filter=['familyName','name','secondName','enterprise','dateOfBirth','address','telephones','photo','note','slug']
-    fields=['familyName','name','secondName','enterprise','dateOfBirth','address','telephones','photo','note','slug']
-
 from main.models import UnitsCategories
 @admin.register(UnitsCategories)
 class UnitsCategoriesAdmin(admin.ModelAdmin):
@@ -172,16 +162,6 @@ class OperationStatusesAdmin(admin.ModelAdmin):
 #@admin.register(ProjectsOperations)
 #class ProjectsOperationsAdmin(admin.ModelAdmin):
 #    prepopulated_fields={'slug':('project',)}
-
-from main.models import Orders
-@admin.register(Orders)
-class OrdersAdmin(admin.ModelAdmin):
-    prepopulated_fields={'slug':('dateTime',)} 
-    list_display=['id','dateTime','orderer','project','note','slug']
-    list_editable=['dateTime','orderer','project','note','slug']
-    search_fields=['dateTime','orderer','project','note','slug']
-    list_filter=['dateTime','orderer','project','note','slug']
-    fields=['dateTime','orderer','project','note','slug']
 
 from main.models import Workers
 @admin.register(Workers)
