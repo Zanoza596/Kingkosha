@@ -51,27 +51,6 @@ class Sources(models.Model):#источники сырья и комплекту
     def __str__(self) -> str:
         return self.name   
 
-class Orderers(models.Model):
-    familyName=models.CharField(max_length=150,blank=True,null=True,verbose_name='Фамилия')
-    name=models.CharField(max_length=150,blank=True,null=True,verbose_name='Имя')
-    secondName=models.CharField(max_length=150,blank=True,null=True,verbose_name='Отчество')
-    enterprise=models.ForeignKey(to=Sources,null=True, verbose_name='Предприятие', on_delete=models.CASCADE)
-    dateOfBirth=models.DateTimeField(blank=True,null=True,verbose_name='Дата рождения')
-    address=models.CharField(max_length=150,blank=True,null=True) 
-    telephones=models.CharField(max_length=150,blank=True,null=True) 
-    photo=models.ImageField(upload_to='main_images',blank=True,null=True,verbose_name='Фото')
-    #Orders=models.PositiveIntegerField()
-    note=models.TextField(max_length=200,blank=True,null=True,verbose_name='Примечания')
-    slug=models.SlugField(max_length=200,unique=True,blank=True,null=True,verbose_name='URL')
-
-    class Meta:
-        db_table='Orderer'
-        verbose_name='Заказчик'
-        verbose_name_plural='Заказчики'
-
-    def __str__(self) -> str:
-        return self.familyName   
-
 class EquipmentsCategories(models.Model):
     name=models.CharField(max_length=150,blank=True,null=True,verbose_name='Название')
     note=models.TextField(max_length=200,blank=True,null=True,verbose_name='Примечания')
@@ -368,21 +347,6 @@ class ProjectsOperations(models.Model):# связь многие ко многи
 
     def __str__(self) -> str:
         return self.project.name+" - "+self.operation.name   
-
-class Orders(models.Model):
-    dateTime=models.DateTimeField(blank=True,null=True)     
-    orderer=models.ForeignKey(to=Orderers,null=True, verbose_name='Заказчик', on_delete=models.CASCADE)
-    project=models.ForeignKey(to=Projects,null=True, verbose_name='Проект', on_delete=models.CASCADE)
-    note=models.TextField(max_length=200,blank=True,null=True,verbose_name='Примечания')
-    slug=models.SlugField(max_length=200,unique=True,blank=True,null=True,verbose_name='URL')
-
-    class Meta:
-        db_table='Order'
-        verbose_name='Заказ'
-        verbose_name_plural='Заказы'
-
-    def __str__(self) -> str:
-        return self.project.name+" - "+self.orderer.name  
 
 class Workers(models.Model):
     familyName=models.CharField(max_length=150,blank=True,null=True,verbose_name='Название')
