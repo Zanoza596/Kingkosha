@@ -391,7 +391,7 @@ class Works(models.Model):
 
 #from datetime import datetime
 class Storage(models.Model):
-    dateTime=models.DateTimeField(default=timezone.now())     
+    dateTime=models.DateTimeField(auto_now_add=True,verbose_name='Дата рождения')     
     component=models.ForeignKey(to=Components,null=True, verbose_name='Материал', on_delete=models.CASCADE)
     quantity=models.DecimalField(default=0.00,max_digits=7,decimal_places=2,verbose_name='Количество')
     note=models.TextField(max_length=200,blank=True,null=True,verbose_name='Примечания')
