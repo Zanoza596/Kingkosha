@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 class UnitsCategories(models.Model):
     name=models.CharField(max_length=150,blank=True,null=True,verbose_name='Название')
@@ -388,9 +389,9 @@ class Works(models.Model):
     def __str__(self) -> str:
         return f'Проект - {self.project.name} Сотрудник - {self.worker.familyName}  Операция - {self.operation.category.name}  {self.operation.co.name} ' 
 
-from datetime import datetime
+#from datetime import datetime
 class Storage(models.Model):
-    dateTime=models.DateTimeField(default=datetime.now())     
+    dateTime=models.DateTimeField(default=timezone.now())     
     component=models.ForeignKey(to=Components,null=True, verbose_name='Материал', on_delete=models.CASCADE)
     quantity=models.DecimalField(default=0.00,max_digits=7,decimal_places=2,verbose_name='Количество')
     note=models.TextField(max_length=200,blank=True,null=True,verbose_name='Примечания')
