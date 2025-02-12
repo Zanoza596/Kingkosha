@@ -20,6 +20,9 @@ from django.conf.urls.static import static
 
 from app import settings
 
+admin.site.site_header="Администрирование"
+admin.site.index_title="Управление данными"
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
