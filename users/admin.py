@@ -1,5 +1,5 @@
 from django.contrib import admin
-# from unfold.admin import admin.ModelAdmin
+from unfold.admin import ModelAdmin
 from carts.admin import CartTabAdmin
 from orders.admin import OrderTabulareAdmin
 from users.models import User
@@ -7,7 +7,7 @@ from users.models import User
 #admin.site.register(User)
 
 @admin.register(User)
-class UserAdmin(admin.ModelAdmin):
+class UserAdmin(ModelAdmin):
     #exclude=['slug',] # fields = [,]
     #exclude=[] # fields = [,]
     prepopulated_fields={'slug':('first_name','last_name',)} 
