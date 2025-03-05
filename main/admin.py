@@ -1,5 +1,6 @@
 from django.contrib import admin
-from django.apps import apps
+# from unfold.admin import admin.ModelAdmin
+#from django.apps import apps
 
 #from main.models import models
 
@@ -114,9 +115,12 @@ class ComponentsAdmin(admin.ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','componentTechCategory','componentProjCategory','componentGoal','quantity','unit','source','chart','sketch','photo','demonstrableForm','description','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
     list_editable=['componentTechCategory','componentProjCategory','componentGoal','quantity','unit','source','chart','sketch','photo','demonstrableForm','description','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
-    search_fields=['name','componentTechCategory','componentProjCategory','componentGoal','quantity','unit','owners','source','chart','sketch','photo','demonstrableForm','description','сomponentsOperations','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
-    list_filter=['name','componentTechCategory','componentProjCategory','componentGoal','quantity','unit','owners','source','chart','sketch','photo','demonstrableForm','description','сomponentsOperations','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
-    fields=['name','componentTechCategory','componentProjCategory','componentGoal','quantity','unit','source','chart','sketch','photo','demonstrableForm','description','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
+    search_fields=['name','componentTechCategory','componentProjCategory','componentGoal','quantity','unit','owners','source','chart','sketch','photo','demonstrableForm','description','componentsOperations','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
+    list_filter=['name','componentTechCategory','componentProjCategory','componentGoal','quantity','unit','owners','source','chart','sketch','photo','demonstrableForm','description','componentsOperations','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
+    #fields=['name','componentTechCategory','componentProjCategory','componentGoal','quantity','unit','source','chart','sketch','photo','demonstrableForm','description','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
+    list_per_page=5
+    exclude=['slug',] # fields = [,]
+    #readonly_fields=[,]
 
 from main.models import Projects
 @admin.register(Projects)
@@ -186,9 +190,9 @@ class WorksAdmin(admin.ModelAdmin):
 from main.models import Storage
 @admin.register(Storage)
 class StorageAdmin(admin.ModelAdmin):
-    prepopulated_fields={'slug':('dateTime',)}   
+    prepopulated_fields={'slug':('id',)}   
     list_display=['dateTime','component','quantity','note','slug']
     list_editable=['component','quantity','note','slug']
     search_fields=['dateTime','component','quantity','note','slug']
     list_filter=['dateTime','component','quantity','note','slug']
-    fields=['dateTime','component','quantity','note','slug']
+    #fields=['dateTime','component','quantity','note','slug']

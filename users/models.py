@@ -4,10 +4,8 @@ from main.models import Sources
 
 class User(AbstractUser):
     image=models.ImageField(upload_to='users_images',blank=True,null=True,verbose_name='Аватар')
-    familyName=models.CharField(max_length=150,blank=True,null=True,verbose_name='Название')
-    name=models.CharField(max_length=150,blank=True,null=True,verbose_name='Название')
-    secondName=models.CharField(max_length=150,blank=True,null=True,verbose_name='Название')
-    enterprise=models.ForeignKey(to=Sources,null=True, verbose_name='Предприятие', on_delete=models.CASCADE)
+    secondName=models.CharField(max_length=150,blank=True,null=True,verbose_name='Отчество')
+    enterprise=models.ForeignKey(to=Sources,blank=True,null=True, verbose_name='Предприятие', on_delete=models.CASCADE)
     dateOfBirth=models.DateTimeField(blank=True,null=True,verbose_name='Дата рождения')
     address=models.CharField(max_length=150,blank=True,null=True) 
     telephones=models.CharField(max_length=150,blank=True,null=True) 
@@ -18,8 +16,8 @@ class User(AbstractUser):
 
     class Meta:
         db_table='user'
-        verbose_name='Пользователя'
+        verbose_name='Пользователь'
         verbose_name_plural='Пользователи'
 
     def __str__(self) -> str:
-        return self.username 
+        return self.username
