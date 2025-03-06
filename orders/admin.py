@@ -1,12 +1,12 @@
 from django.contrib import admin
-# from unfold.admin import admin.ModelAdmin, TabularInline
+from unfold.admin import ModelAdmin, TabularInline
 
 from orders.models import Order, OrderItem
 
 # admin.site.register(Order)
 # admin.site.register(OrderItem)
 
-class OrderItemTabulareAdmin(admin.TabularInline):
+class OrderItemTabulareAdmin(TabularInline):
     model = OrderItem
     fields = "product", "name", "price", "quantity"
     search_fields = (
@@ -17,7 +17,7 @@ class OrderItemTabulareAdmin(admin.TabularInline):
 
 
 @admin.register(OrderItem)
-class OrderItemAdmin(admin.ModelAdmin):
+class OrderItemAdmin(ModelAdmin):
     list_display = "order", "product", "name", "price", "quantity"
     search_fields = (
         "order",
@@ -26,7 +26,7 @@ class OrderItemAdmin(admin.ModelAdmin):
     )
 
 
-class OrderTabulareAdmin(admin.TabularInline):
+class OrderTabulareAdmin(TabularInline):
     model = Order
     fields = (
         "requires_delivery",
@@ -47,7 +47,7 @@ class OrderTabulareAdmin(admin.TabularInline):
 
 
 @admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
+class OrderAdmin(ModelAdmin):
     list_display = (
         "id",
         "user",

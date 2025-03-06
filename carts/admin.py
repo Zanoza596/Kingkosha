@@ -1,10 +1,10 @@
 from django.contrib import admin
-# from unfold.admin import ModelAdmin, TabularInline
+from unfold.admin import ModelAdmin, TabularInline
 
 from carts.models import Cart
 
 # admin.site.register(Cart)
-class CartTabAdmin(admin.TabularInline):
+class CartTabAdmin(TabularInline):
     model = Cart
     fields = "product", "quantity", "created_timestamp"
     search_fields = "product", "quantity", "created_timestamp"
@@ -13,7 +13,7 @@ class CartTabAdmin(admin.TabularInline):
 
 
 @admin.register(Cart)
-class CartAdmin(admin.ModelAdmin):
+class CartAdmin(ModelAdmin):
     list_display = ["user_display", "product_display", "quantity", "created_timestamp",]
     list_filter = ["created_timestamp", "user", "product__name",]
 

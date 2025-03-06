@@ -1,5 +1,5 @@
 from django.contrib import admin
-# from unfold.admin import admin.ModelAdmin
+from unfold.admin import ModelAdmin
 #from django.apps import apps
 
 #from main.models import models
@@ -11,7 +11,7 @@ from django.contrib import admin
 
 from main.models import UnitsCategories
 @admin.register(UnitsCategories)
-class UnitsCategoriesAdmin(admin.ModelAdmin):
+class UnitsCategoriesAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','note','slug']
     list_editable=['note','slug']
@@ -21,7 +21,7 @@ class UnitsCategoriesAdmin(admin.ModelAdmin):
 
 from main.models import Units
 @admin.register(Units)
-class UnitsAdmin(admin.ModelAdmin):
+class UnitsAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','unitCategory','note','slug']
     list_editable=['unitCategory','note','slug']
@@ -31,7 +31,7 @@ class UnitsAdmin(admin.ModelAdmin):
 
 from main.models import Sources
 @admin.register(Sources)
-class SourcesAdmin(admin.ModelAdmin):
+class SourcesAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','address','route','mapChart','mapSketch','mapDemonstrableForm','photo','description','note','slug']
     list_editable=['address','route','mapChart','mapSketch','mapDemonstrableForm','photo','description','note','slug']
@@ -41,7 +41,7 @@ class SourcesAdmin(admin.ModelAdmin):
 
 from main.models import EquipmentsCategories
 @admin.register(EquipmentsCategories)
-class EquipmentCategoriesAdmin(admin.ModelAdmin):
+class EquipmentCategoriesAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','note','slug']
     list_editable=['note','slug']
@@ -51,7 +51,7 @@ class EquipmentCategoriesAdmin(admin.ModelAdmin):
 
 from main.models import Equipments
 @admin.register(Equipments)
-class EquipmentsAdmin(admin.ModelAdmin):
+class EquipmentsAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','equipmentCategory','source','chart','sketch','photo','demonstrableForm','description','note','slug']
     list_editable=['equipmentCategory','source','chart','sketch','photo','demonstrableForm','description','note','slug']
@@ -61,7 +61,7 @@ class EquipmentsAdmin(admin.ModelAdmin):
 
 from main.models import Amortizations
 @admin.register(Amortizations)
-class AmortizationsAdmin(admin.ModelAdmin):
+class AmortizationsAdmin(ModelAdmin):
     prepopulated_fields={'slug':('equipment',)} 
     list_display=['equipment','note','slug']
     list_editable=['note','slug']
@@ -71,7 +71,7 @@ class AmortizationsAdmin(admin.ModelAdmin):
 
 from main.models import OperationsCategories
 @admin.register(OperationsCategories)
-class OperationCategorysAdmin(admin.ModelAdmin):
+class OperationCategorysAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','note','slug']
     list_editable=['note','slug']
@@ -81,7 +81,7 @@ class OperationCategorysAdmin(admin.ModelAdmin):
 
 from main.models import ComponentsTechCategories
 @admin.register(ComponentsTechCategories)
-class ComponentsTechCategoriesAdmin(admin.ModelAdmin):
+class ComponentsTechCategoriesAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','parent','note','slug']
     list_editable=['parent','note','slug']
@@ -91,7 +91,7 @@ class ComponentsTechCategoriesAdmin(admin.ModelAdmin):
 
 from main.models import ComponentsProjCategories
 @admin.register(ComponentsProjCategories)
-class ComponentsProjCategoriesAdmin(admin.ModelAdmin):
+class ComponentsProjCategoriesAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','parent','note','slug']
     list_editable=['parent','note','slug']
@@ -101,7 +101,7 @@ class ComponentsProjCategoriesAdmin(admin.ModelAdmin):
 
 from main.models import ComponentsGoals
 @admin.register(ComponentsGoals)
-class ComponentsGoalsAdmin(admin.ModelAdmin):
+class ComponentsGoalsAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','parent','note','slug']
     list_editable=['parent','note','slug']
@@ -111,7 +111,7 @@ class ComponentsGoalsAdmin(admin.ModelAdmin):
 
 from main.models import Components
 @admin.register(Components)
-class ComponentsAdmin(admin.ModelAdmin):
+class ComponentsAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','componentTechCategory','componentProjCategory','componentGoal','quantity','unit','source','chart','sketch','photo','demonstrableForm','description','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
     list_editable=['componentTechCategory','componentProjCategory','componentGoal','quantity','unit','source','chart','sketch','photo','demonstrableForm','description','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
@@ -124,7 +124,7 @@ class ComponentsAdmin(admin.ModelAdmin):
 
 from main.models import Projects
 @admin.register(Projects)
-class ProjectsAdmin(admin.ModelAdmin):
+class ProjectsAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)}
     list_display=['name','planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
     list_editable=['planTime','startDateTame','finishDateTame','price','discount','selfCost','note','slug']
@@ -134,12 +134,12 @@ class ProjectsAdmin(admin.ModelAdmin):
 
 #from main.models import ProjectsComponents
 #@admin.register(ProjectsComponents)
-#class ProjectsComponentsAdmin(admin.ModelAdmin):
+#class ProjectsComponentsAdmin(ModelAdmin):
 #    prepopulated_fields={'slug':('component',)} 
 
 from main.models import Operations
 @admin.register(Operations)
-class OperationsAdmin(admin.ModelAdmin):
+class OperationsAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)}  
     list_display=['name','time','unit','cost','category','equipment','multiplier','unitTime','salary','amortization','note','slug']
     list_editable=['time','unit','cost','category','equipment','multiplier','unitTime','salary','amortization','note','slug']
@@ -149,12 +149,12 @@ class OperationsAdmin(admin.ModelAdmin):
 
 #from main.models import ComponentsOperations
 #@admin.register(ComponentsOperations)
-#class ComponentsOperationsAdmin(admin.ModelAdmin):
+#class ComponentsOperationsAdmin(ModelAdmin):
 #    prepopulated_fields={'slug':('component',)}  
 
 from main.models import OperationsStatuses
 @admin.register(OperationsStatuses)
-class OperationStatusesAdmin(admin.ModelAdmin):
+class OperationStatusesAdmin(ModelAdmin):
     prepopulated_fields={'slug':('name',)} 
     list_display=['name','note','slug']
     list_editable=['note','slug']
@@ -164,12 +164,12 @@ class OperationStatusesAdmin(admin.ModelAdmin):
 
 #from main.models import ProjectsOperations
 #@admin.register(ProjectsOperations)
-#class ProjectsOperationsAdmin(admin.ModelAdmin):
+#class ProjectsOperationsAdmin(ModelAdmin):
 #    prepopulated_fields={'slug':('project',)}
 
 from main.models import Workers
 @admin.register(Workers)
-class WorkersAdmin(admin.ModelAdmin):
+class WorkersAdmin(ModelAdmin):
     prepopulated_fields={'slug':('familyName',)}  
     list_display=['familyName','name','secondName','passport','dateOfBirth','address','telephones','photo','note','slug']
     list_editable=['name','secondName','passport','dateOfBirth','address','telephones','photo','note','slug']
@@ -179,7 +179,7 @@ class WorkersAdmin(admin.ModelAdmin):
 
 from main.models import Works
 @admin.register(Works)
-class WorksAdmin(admin.ModelAdmin):
+class WorksAdmin(ModelAdmin):
     prepopulated_fields={'slug':('project',)} 
     list_display=['startDateTimeOperation','finishtDateTimeOperation','workTime','worker','project','operation','makeWork','note','slug']
     list_editable=['finishtDateTimeOperation','workTime','worker','project','operation','makeWork','note','slug']
@@ -189,7 +189,7 @@ class WorksAdmin(admin.ModelAdmin):
 
 from main.models import Storage
 @admin.register(Storage)
-class StorageAdmin(admin.ModelAdmin):
+class StorageAdmin(ModelAdmin):
     prepopulated_fields={'slug':('id',)}   
     list_display=['dateTime','component','quantity','note','slug']
     list_editable=['component','quantity','note','slug']
